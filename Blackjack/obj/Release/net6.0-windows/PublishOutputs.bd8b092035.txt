@@ -1,0 +1,5 @@
+C:\Users\kam_r\OneDrive\Desktop\Blackjack.exe
+C:\Users\kam_r\OneDrive\Desktop\Blackjack.dll
+C:\Users\kam_r\OneDrive\Desktop\Blackjack.deps.json
+C:\Users\kam_r\OneDrive\Desktop\Blackjack.runtimeconfig.json
+C:\Users\kam_r\OneDrive\Desktop\Blackjack.pdb

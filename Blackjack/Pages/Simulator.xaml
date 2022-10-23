@@ -1,0 +1,2070 @@
+﻿<Page
+    x:Class="Blackjack.Pages.Simulator"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Blackjack.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Simulator"
+    d:DesignHeight="800"
+    d:DesignWidth="1200"
+    Background="Green"
+    mc:Ignorable="d">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20*" />
+            <ColumnDefinition Width="10*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="24*" />
+            <RowDefinition Height="6*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid
+            Grid.Row="1"
+            Grid.RowSpan="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid
+                    Grid.Row="0"
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Image
+                            x:Name="AceImage"
+                            Grid.Row="0"
+                            Grid.RowSpan="5"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="5"
+                            Source="/Resources/Ace.png" />
+                        <Button
+                            x:Name="AceAddButton"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Crimson"
+                            Click="AceAddButton_Click"
+                            Content="A"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Red" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="AcePlayerButton"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Gold"
+                            Click="AcePlayerButton_Click"
+                            Content="P"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Yellow" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="AceRemoveButton"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Aqua"
+                            Click="AceRemoveButton_Click"
+                            Content="R"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Cyan" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="AceDealerButton"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="LimeGreen"
+                            Click="AceDealerButton_Click"
+                            Content="D"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Lime" />
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                    <TextBlock
+                        x:Name="AceNumCardTextBlock"
+                        Grid.Row="1"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="AceProbabilityTextBlock"
+                        Grid.Row="2"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+                <Grid
+                    Grid.Row="0"
+                    Grid.RowSpan="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Image
+                            x:Name="TwoImage"
+                            Grid.Row="0"
+                            Grid.RowSpan="5"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="5"
+                            Source="/Resources/Two.png" />
+                        <Button
+                            x:Name="TwoAddButton"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Crimson"
+                            Click="TwoAddButton_Click"
+                            Content="A"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Red" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="TwoPlayerButton"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Gold"
+                            Click="TwoPlayerButton_Click"
+                            Content="P"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Yellow" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="TwoRemoveButton"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Aqua"
+                            Click="TwoRemoveButton_Click"
+                            Content="R"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Cyan" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="TwoDealerButton"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="LimeGreen"
+                            Click="TwoDealerButton_Click"
+                            Content="D"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Lime" />
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                    <TextBlock
+                        x:Name="TwoNumCardTextBlock"
+                        Grid.Row="1"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="TwoProbabilityTextBlock"
+                        Grid.Row="2"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+                <Grid
+                    Grid.Row="0"
+                    Grid.RowSpan="1"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Image
+                            x:Name="ThreeImage"
+                            Grid.Row="0"
+                            Grid.RowSpan="5"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="5"
+                            Source="/Resources/Three.png" />
+                        <Button
+                            x:Name="ThreeAddButton"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Crimson"
+                            Click="ThreeAddButton_Click"
+                            Content="A"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Red" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="ThreePlayerButton"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Gold"
+                            Click="ThreePlayerButton_Click"
+                            Content="P"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Yellow" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="ThreeRemoveButton"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Aqua"
+                            Click="ThreeRemoveButton_Click"
+                            Content="R"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Cyan" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="ThreeDealerButton"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="LimeGreen"
+                            Click="ThreeDealerButton_Click"
+                            Content="D"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Lime" />
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                    <TextBlock
+                        x:Name="ThreeNumCardTextBlock"
+                        Grid.Row="1"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="ThreeProbabilityTextBlock"
+                        Grid.Row="2"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+                <Grid
+                    Grid.Row="0"
+                    Grid.RowSpan="1"
+                    Grid.Column="3"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Image
+                            x:Name="FourImage"
+                            Grid.Row="0"
+                            Grid.RowSpan="5"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="5"
+                            Source="/Resources/Four.png" />
+                        <Button
+                            x:Name="FourAddButton"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Crimson"
+                            Click="FourAddButton_Click"
+                            Content="A"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Red" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="FourPlayerButton"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Gold"
+                            Click="FourPlayerButton_Click"
+                            Content="P"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Yellow" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="FourRemoveButton"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Aqua"
+                            Click="FourRemoveButton_Click"
+                            Content="R"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Cyan" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="FourDealerButton"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="LimeGreen"
+                            Click="FourDealerButton_Click"
+                            Content="D"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Lime" />
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                    <TextBlock
+                        x:Name="FourNumCardTextBlock"
+                        Grid.Row="1"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="FourProbabilityTextBlock"
+                        Grid.Row="2"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+                <Grid
+                    Grid.Row="0"
+                    Grid.RowSpan="1"
+                    Grid.Column="4"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Image
+                            x:Name="FiveImage"
+                            Grid.Row="0"
+                            Grid.RowSpan="5"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="5"
+                            Source="/Resources/Five.png" />
+                        <Button
+                            x:Name="FiveAddButton"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Crimson"
+                            Click="FiveAddButton_Click"
+                            Content="A"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Red" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="FivePlayerButton"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Gold"
+                            Click="FivePlayerButton_Click"
+                            Content="P"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Yellow" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="FiveRemoveButton"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Aqua"
+                            Click="FiveRemoveButton_Click"
+                            Content="R"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Cyan" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="FiveDealerButton"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="LimeGreen"
+                            Click="FiveDealerButton_Click"
+                            Content="D"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Lime" />
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                    <TextBlock
+                        x:Name="FiveNumCardTextBlock"
+                        Grid.Row="1"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="FiveProbabilityTextBlock"
+                        Grid.Row="2"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+                <Grid
+                    Grid.Row="1"
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Image
+                            x:Name="SixImage"
+                            Grid.Row="0"
+                            Grid.RowSpan="5"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="5"
+                            Source="/Resources/Six.png" />
+                        <Button
+                            x:Name="SixAddButton"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Crimson"
+                            Click="SixAddButton_Click"
+                            Content="A"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Red" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="SixPlayerButton"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Gold"
+                            Click="SixPlayerButton_Click"
+                            Content="P"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Yellow" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="SixRemoveButton"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Aqua"
+                            Click="SixRemoveButton_Click"
+                            Content="R"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Cyan" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="SixDealerButton"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="LimeGreen"
+                            Click="SixDealerButton_Click"
+                            Content="D"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Lime" />
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                    <TextBlock
+                        x:Name="SixNumCardTextBlock"
+                        Grid.Row="1"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="SixProbabilityTextBlock"
+                        Grid.Row="2"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+                <Grid
+                    Grid.Row="2"
+                    Grid.RowSpan="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Image
+                            x:Name="SevenImage"
+                            Grid.Row="0"
+                            Grid.RowSpan="5"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="5"
+                            Source="/Resources/Seven.png" />
+                        <Button
+                            x:Name="SevenAddButton"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Crimson"
+                            Click="SevenAddButton_Click"
+                            Content="A"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Red" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="SevenPlayerButton"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Gold"
+                            Click="SevenPlayerButton_Click"
+                            Content="P"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Yellow" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="SevenRemoveButton"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Aqua"
+                            Click="SevenRemoveButton_Click"
+                            Content="R"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Cyan" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="SevenDealerButton"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="LimeGreen"
+                            Click="SevenDealerButton_Click"
+                            Content="D"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Lime" />
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                    <TextBlock
+                        x:Name="SevenNumCardTextBlock"
+                        Grid.Row="1"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="SevenProbabilityTextBlock"
+                        Grid.Row="2"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+                <Grid
+                    Grid.Row="1"
+                    Grid.RowSpan="1"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Image
+                            x:Name="EightImage"
+                            Grid.Row="0"
+                            Grid.RowSpan="5"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="5"
+                            Source="/Resources/Eight.png" />
+                        <Button
+                            x:Name="EightAddButton"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Crimson"
+                            Click="EightAddButton_Click"
+                            Content="A"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Red" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="EightPlayerButton"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Gold"
+                            Click="EightPlayerButton_Click"
+                            Content="P"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Yellow" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="EightRemoveButton"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Aqua"
+                            Click="EightRemoveButton_Click"
+                            Content="R"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Cyan" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="EightDealerButton"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="LimeGreen"
+                            Click="EightDealerButton_Click"
+                            Content="D"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Lime" />
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                    <TextBlock
+                        x:Name="EightNumCardTextBlock"
+                        Grid.Row="1"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="EightProbabilityTextBlock"
+                        Grid.Row="2"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+                <Grid
+                    Grid.Row="1"
+                    Grid.RowSpan="1"
+                    Grid.Column="3"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Image
+                            x:Name="NineImage"
+                            Grid.Row="0"
+                            Grid.RowSpan="5"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="5"
+                            Source="/Resources/Nine.png" />
+                        <Button
+                            x:Name="NineAddButton"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Crimson"
+                            Click="NineAddButton_Click"
+                            Content="A"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Red" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="NinePlayerButton"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Gold"
+                            Click="NinePlayerButton_Click"
+                            Content="P"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Yellow" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="NineRemoveButton"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Aqua"
+                            Click="NineRemoveButton_Click"
+                            Content="R"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Cyan" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="NineDealerButton"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="LimeGreen"
+                            Click="NineDealerButton_Click"
+                            Content="D"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Lime" />
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                    <TextBlock
+                        x:Name="NineNumCardTextBlock"
+                        Grid.Row="1"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="NineProbabilityTextBlock"
+                        Grid.Row="2"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+                <Grid
+                    Grid.Row="1"
+                    Grid.RowSpan="1"
+                    Grid.Column="4"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Image
+                            x:Name="TenImage"
+                            Grid.Row="0"
+                            Grid.RowSpan="5"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="5"
+                            Source="/Resources/Ten.png" />
+                        <Button
+                            x:Name="TenAddButton"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Crimson"
+                            Click="TenAddButton_Click"
+                            Content="A"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Red" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="TenPlayerButton"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Gold"
+                            Click="TenPlayerButton_Click"
+                            Content="P"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Yellow" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="TenRemoveButton"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="Aqua"
+                            Click="TenRemoveButton_Click"
+                            Content="R"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Cyan" />
+                            </Button.Background>
+                        </Button>
+                        <Button
+                            x:Name="TenDealerButton"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="LimeGreen"
+                            Click="TenDealerButton_Click"
+                            Content="D"
+                            FontFamily="Imprint MT Shadow"
+                            FontSize="36"
+                            Foreground="Black">
+                            <Button.Background>
+                                <SolidColorBrush Opacity="0.7" Color="Lime" />
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                    <TextBlock
+                        x:Name="TenNumCardTextBlock"
+                        Grid.Row="1"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="TenProbabilityTextBlock"
+                        Grid.Row="2"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid
+            Grid.Row="2"
+            Grid.RowSpan="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Button
+                x:Name="NextDealButton"
+                Grid.Row="0"
+                Grid.RowSpan="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="1"
+                Click="NextDealButton_Click"
+                Content="Next Deal"
+                FontFamily="Imprint MT Shadow"
+                FontSize="36" />
+            <Button
+                x:Name="DeckResetButton"
+                Grid.Row="0"
+                Grid.RowSpan="1"
+                Grid.Column="1"
+                Grid.ColumnSpan="1"
+                Click="DeckResetButton_Click"
+                Content="Deck Reset"
+                FontFamily="Imprint MT Shadow"
+                FontSize="36" />
+            <Button
+                x:Name="SimulateButton"
+                Grid.Row="1"
+                Grid.RowSpan="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="1"
+                Click="SimulateButton_Click"
+                Content="Simulate"
+                FontFamily="Imprint MT Shadow"
+                FontSize="36" />
+            <Button
+                x:Name="PlayerAndDealerResetButton"
+                Grid.Row="1"
+                Grid.RowSpan="1"
+                Grid.Column="1"
+                Grid.ColumnSpan="1"
+                Click="PlayerAndDealerResetButton_Click"
+                Content="P&amp;D Reset"
+                FontFamily="Imprint MT Shadow"
+                FontSize="36" />
+        </Grid>
+        <Grid
+            Grid.Row="1"
+            Grid.RowSpan="1"
+            Grid.Column="2"
+            Grid.ColumnSpan="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0"
+                Grid.RowSpan="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1"
+                    VerticalAlignment="Center"
+                    FontFamily="Imprint MT Shadow"
+                    FontSize="36"
+                    Foreground="White"
+                    Text="Player"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap" />
+                <Grid
+                    Grid.Row="1"
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="36"
+                        Foreground="White"
+                        Text="≧17"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="PlayerSeventeenAndOverTextBlock"
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+                <Grid
+                    Grid.Row="2"
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="36"
+                        Foreground="White"
+                        Text="≧18"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="PlayerEighteenAndOverTextBlock"
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+                <Grid
+                    Grid.Row="3"
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="36"
+                        Foreground="White"
+                        Text="≧19"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="PlayerNineteenAndOverTextBlock"
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+                <Grid
+                    Grid.Row="4"
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="36"
+                        Foreground="White"
+                        Text="≧20"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="PlayerTwentyAndOverTextBlock"
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+                <Grid
+                    Grid.Row="5"
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="36"
+                        Foreground="White"
+                        Text="≧21"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="PlayerTwentyOneAndOverTextBlock"
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+                <Grid
+                    Grid.Row="6"
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="36"
+                        Foreground="White"
+                        Text="B"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="PlayerBustTextBlock"
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+            </Grid>
+            <Grid
+                Grid.Row="0"
+                Grid.RowSpan="1"
+                Grid.Column="1"
+                Grid.ColumnSpan="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1"
+                    VerticalAlignment="Center"
+                    FontFamily="Imprint MT Shadow"
+                    FontSize="36"
+                    Foreground="White"
+                    Text="Dealer"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap" />
+                <Grid
+                    Grid.Row="1"
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="36"
+                        Foreground="White"
+                        Text="17"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="DealerSeventeenAndOverTextBlock"
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+                <Grid
+                    Grid.Row="2"
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="36"
+                        Foreground="White"
+                        Text="18"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="DealerEighteenAndOverTextBlock"
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+                <Grid
+                    Grid.Row="3"
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="36"
+                        Foreground="White"
+                        Text="19"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="DealerNineteenAndOverTextBlock"
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+                <Grid
+                    Grid.Row="4"
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="36"
+                        Foreground="White"
+                        Text="20"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="DealerTwentyAndOverTextBlock"
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+                <Grid
+                    Grid.Row="5"
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="36"
+                        Foreground="White"
+                        Text="21"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="DealerTwentyOneAndOverTextBlock"
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+                <Grid
+                    Grid.Row="6"
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="36"
+                        Foreground="White"
+                        Text="B"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="DealerBustTextBlock"
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Center"
+                        FontFamily="Imprint MT Shadow"
+                        FontSize="24"
+                        Foreground="White"
+                        Text="0%"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid
+            Grid.Row="2"
+            Grid.RowSpan="1"
+            Grid.Column="2"
+            Grid.ColumnSpan="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0"
+                Grid.RowSpan="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1"
+                    VerticalAlignment="Center"
+                    FontFamily="Imprint MT Shadow"
+                    FontSize="36"
+                    Foreground="White"
+                    Text="Player"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    x:Name="PlayerHandTextBlock"
+                    Grid.Row="0"
+                    Grid.RowSpan="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="1"
+                    VerticalAlignment="Center"
+                    FontFamily="Imprint MT Shadow"
+                    FontSize="36"
+                    Foreground="White"
+                    Text="Hard0"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap" />
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Grid.RowSpan="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1"
+                    VerticalAlignment="Center"
+                    FontFamily="Imprint MT Shadow"
+                    FontSize="36"
+                    Foreground="White"
+                    Text="Dealer"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    x:Name="DealerHandTextBlock"
+                    Grid.Row="0"
+                    Grid.RowSpan="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="1"
+                    VerticalAlignment="Center"
+                    FontFamily="Imprint MT Shadow"
+                    FontSize="36"
+                    Foreground="White"
+                    Text="Hard0"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap" />
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

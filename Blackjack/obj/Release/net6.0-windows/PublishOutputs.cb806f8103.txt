@@ -1,0 +1,5 @@
+C:\Users\kam_r\OneDrive\Desktop\Kamichan_R\Game\BlackjackSimulator\Blackjack.exe
+C:\Users\kam_r\OneDrive\Desktop\Kamichan_R\Game\BlackjackSimulator\Blackjack.dll
+C:\Users\kam_r\OneDrive\Desktop\Kamichan_R\Game\BlackjackSimulator\Blackjack.deps.json
+C:\Users\kam_r\OneDrive\Desktop\Kamichan_R\Game\BlackjackSimulator\Blackjack.runtimeconfig.json
+C:\Users\kam_r\OneDrive\Desktop\Kamichan_R\Game\BlackjackSimulator\Blackjack.pdb
